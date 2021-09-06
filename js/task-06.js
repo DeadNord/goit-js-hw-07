@@ -1,14 +1,34 @@
 const input = document.querySelector("#validation-input");
-const limit = input.getAttribute("data-length");
 
 
 
-input.addEventListener("blur", () => {
-    if (input.value.length !== Number(limit)) {
-        input.classList.add("invalid");
-        
+input.addEventListener("blur", validator);
+
+function validator(){
+
+    if (this.value.length === Number(this.getAttribute("data-length"))) {
+        invalidCheck("valid", "invalid");
     } else {
-        input.classList.add("valid");
-        input.classList.replace("invalid", "valid");
+        validCheck("valid", "invalid");
     }
-})
+}
+
+function invalidCheck(valid, invalid) {
+    if (input.classList.contains("invalid")) {
+        input.classList.replace("invalid", "valid");
+        
+        return;
+    }
+
+    input.classList.add("valid");
+}
+
+function validCheck(valid, invalid) {
+    if (input.classList.contains("valid")) {
+        input.classList.replace("valid", "invalid");
+
+        return;
+    }
+
+    input.classList.add("invalid");
+}
