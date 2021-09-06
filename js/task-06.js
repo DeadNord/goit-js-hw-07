@@ -7,13 +7,13 @@ input.addEventListener("blur", validator);
 function validator(){
 
     if (this.value.length === Number(this.getAttribute("data-length"))) {
-        invalidCheck("valid", "invalid");
-    } else {
         validCheck("valid", "invalid");
+    } else {
+        invalidCheck("valid", "invalid");
     }
 }
 
-function invalidCheck(valid, invalid) {
+function validCheck(valid, invalid) {
     if (input.classList.contains("invalid")) {
         input.classList.replace("invalid", "valid");
         
@@ -23,7 +23,7 @@ function invalidCheck(valid, invalid) {
     input.classList.add("valid");
 }
 
-function validCheck(valid, invalid) {
+function invalidCheck(valid, invalid) {
     if (input.classList.contains("valid")) {
         input.classList.replace("valid", "invalid");
 
